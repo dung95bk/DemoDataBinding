@@ -1,5 +1,6 @@
 package com.example.databindingdemo
 
+import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import java.util.Observable;
@@ -10,6 +11,7 @@ class UserObservable : BaseObservable() {
     var firstName: String = ""
         set(value) {
             field = value
+            Log.e("UserObservable", value)
             notifyPropertyChanged(BR.firstName)
         }
 
