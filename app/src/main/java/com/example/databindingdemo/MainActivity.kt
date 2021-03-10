@@ -2,6 +2,7 @@ package com.example.databindingdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -24,8 +25,11 @@ class MainActivity : AppCompatActivity() {
         binding?.userObservable = userObservable
         abc()
         abc_def.setOnClickListener {
-
+           user?.testInverseMethod?.set(System.currentTimeMillis().toInt())
+            abc_def.setText("đâs")
         }
+
+
 
     }
 

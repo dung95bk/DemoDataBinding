@@ -21,4 +21,13 @@ class UserObservable : BaseObservable() {
             field = value
             notifyPropertyChanged(BR.lastName)
         }
+
+    @get:Bindable
+    var maxLength: Int = 1
+        set(value) {
+            field = value
+            Log.e("UserObservable", value.toString())
+            notifyPropertyChanged(BR.firstName)
+        }
+
 }

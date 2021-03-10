@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <data>
-        <import type="String"/>
-
+    <data >
+        <import type="com.example.databindingdemo.InverseMethodConv"/>
         <variable name="user" type="com.example.databindingdemo.User"/>
         <variable name="userObservable" type="com.example.databindingdemo.UserObservable"/>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,27 +13,59 @@
         android:layout_height="match_parent"
        >
 
-        <TextView
+        <com.example.databindingdemo.TextViewCustom
             android:id="@+id/abc_def"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{user.firstName}"
             android:textColor="#FF0000"
+            android:maxLength="@{user.inputType}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <EditText
             android:id="@+id/edtText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.textVisible}"
+            android:text="@={user.textVisible}"
+            android:inputType="@{user.inputType}"
+            android:beforeTextChanged="@{user.ccc}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/abc_def" />
 
+        <View
+            android:background="@{user.isColor ? @drawable/ic_launcher_background :  @drawable/ic_launcher_background }"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chkBox"/>
+
+        <CheckBox
+            android:id="@+id/chkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{user.tesstBoolean}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtText"/>
+
+        <EditText
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={InverseMethodConv.convertIntToString(user.testInverseMethod)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chkBox"/>
 
 
 
